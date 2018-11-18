@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyText">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="MyText.Centered">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="MyCenteredText" parent="MyText">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="BlueBackground">
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>
