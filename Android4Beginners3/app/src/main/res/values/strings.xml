@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Intent demo</string>
+    <string name="action_settings">Settings</string>
+    <string name="show_color">Pokaż kolor</string>
+    <string name="elements_label">Elementy:</string>
+    <string name="provide_input">Wprowadź dane</string>
+    <string name="accept_and_close">Akceptuj i zamknij</string>
+</resources>
