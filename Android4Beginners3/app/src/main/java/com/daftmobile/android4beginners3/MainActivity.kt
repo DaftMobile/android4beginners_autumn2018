@@ -1,8 +1,11 @@
 package com.daftmobile.android4beginners3
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.Random
 
@@ -15,12 +18,22 @@ class MainActivity : LifecycleLoggingActivity() {
         inputButton.setOnClickListener(this::showInputActivity)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+            inputData.text = data!!.getStringExtra("result")
+            Toast.makeText(this, data.getStringExtra("result"), Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun showColorActivity(view: View) {
-        // tutaj otwórz ColorActivity
+        val intent = Intent(this, ColorActivity::class.java)
+                .putExtra("color", RandomColor.generate())
+        startActivity(intent)
     }
 
     private fun showInputActivity(view: View) {
-        // tutaj otwórz InputActivity
+        val intent = Intent(this, InputActivity::class.java)
+        startActivityForResult(intent, 101)
     }
 
     private object RandomColor {
