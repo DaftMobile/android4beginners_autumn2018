@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mail sender</string>
+    <string name="email_subject">Wiadomość z pracy domowej</string>
+    <string name="send_email">Rozpocznij wysyłanie</string>
+</resources>
