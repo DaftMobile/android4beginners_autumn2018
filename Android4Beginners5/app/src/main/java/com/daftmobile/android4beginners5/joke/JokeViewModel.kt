@@ -17,23 +17,14 @@ class JokeViewModel: ViewModel() {
     fun loaderVisible(): LiveData<Boolean> = loaderVisibleData
 
     fun call() {
-        // TODO
-    }
-
-    private fun doSomeThreading() {
-        println("Funny stuff from ${Thread.currentThread().name} thread")
-        Thread {
-            Thread.sleep(3000)
-            println("Response from ${Thread.currentThread().name} thread")
-            responseLiveData.value = "Akuku"
-        }.start()
+        fetchDataFromApi()
     }
 
     private fun fetchDataFromApi() {
         jokeDataSource.fetch({
             responseLiveData.setValue(it)
         }, {
-
+            errorLiveData.value = it
         })
     }
 }

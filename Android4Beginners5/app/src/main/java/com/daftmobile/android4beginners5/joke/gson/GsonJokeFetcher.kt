@@ -3,6 +3,7 @@ package com.daftmobile.android4beginners5.joke.gson
 import com.daftmobile.android4beginners5.joke.JokeDataSource
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class GsonJokeFetcher: JokeDataSource {
 
@@ -12,10 +13,10 @@ class GsonJokeFetcher: JokeDataSource {
     private val retrofit = Retrofit.Builder()
             .client(client)
             .baseUrl("https://switter.app.daftmobile.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-//    private val jokeApi = retrofit.create(JokeApi::class.java)
+    // trzeba stworzyć drugi plik JokeApi, taki, w którym metody zwracają Call<Joke>
 
     override fun fetch(onSuccess: (String) -> Unit, onError: (String) -> Unit) = Unit
 }

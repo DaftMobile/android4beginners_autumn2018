@@ -25,9 +25,19 @@ class VendingViewModel: ViewModel() {
     }
 
     fun vend(barName: String) {
-        val bar = vendingMachine.vend(barName)
-        chocoBarLiveData.value = "You vended ${bar.name}"
-        refreshDeposit()
+        try {
+            val bar = vendingMachine.vend(barName)
+            chocoBarLiveData.value = "You vended ${bar.name}"
+            refreshDeposit()
+        } catch (e: Exception) {
+            errorLiveData.value = e.message
+        } catch (e: InsufficientFundsException) {
+            errorLiveData.value = "Nie masz kasy"
+        } catch (e: OutOfStockException) {
+            errorLiveData.value = "Skończył się ${e.barName}"
+        } catch (e: ItemNotFoundException) {
+            errorLiveData.value = "Nie znam ${e.itemName}"
+        }
     }
 
     private fun refreshDeposit() {
